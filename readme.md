@@ -86,8 +86,9 @@ A great alternative for `SystemJS` / `jspm` users is the SystemJS [text
 plugin](https://github.com/systemjs/plugin-text). Example usage:
 
 ```
-import template from './template!text';
 import {Component} from 'atril';
+// Import as a string.
+import template from './my-component.html!text';
 
 @Component({my-component})
 class VM {static template = template}
