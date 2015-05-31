@@ -1,6 +1,6 @@
 {
   "name": "gulp-atril-html2js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert HTML templates into strings for atril.",
   "main": "lib/index.js",
   "scripts": {},
