@@ -1,7 +1,7 @@
 ## Description
 
 This is a [`gulp`](http://gulpjs.com) plugin for
-[`atril`](https://github.com/Mitranim/atril), an experimental UI framework in
+[`atril`](http://mitranim.com/atril/), an experimental UI framework in
 the collective spirit of ReactJS, Polymer, Angular 2 and Aurelia.
 
 Converts HTML templates into JavaScript modules that self-add to `atril`'s
