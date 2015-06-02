@@ -5,7 +5,7 @@ This is a [`gulp`](http://gulpjs.com) plugin for
 the collective spirit of ReactJS, Polymer, Angular 2 and Aurelia.
 
 Converts HTML templates into JavaScript modules that self-add to `atril`'s
-template cache. This lets you avoid runtime XHR imports.
+view cache. This lets you avoid runtime XHR imports.
 
 **Note**: the converted files are in the ES6 module format. You'll need to
 transpile them into your chosen module format (SystemJS / CommonJS / AMD) with
@@ -26,7 +26,7 @@ In your `gulpfile.js`:
 ```javascript
 var $ = require('gulp-load-plugins')();
 
-gulp.task('templates', function() {
+gulp.task('views', function() {
   return gulp.src([
       'src/app/**/*.html',
       'src/app/**/*.svg'
@@ -40,12 +40,12 @@ gulp.task('templates', function() {
 In your scripts:
 
 ```typescript
-// Each template has to be imported separately.
+// Each view has to be imported separately.
 import 'app/my-component/my-component.html';
 import {Component} from 'atril';
 
 @Component({my-component})
-class VM {static templateUrl = 'app/my-component/my-component.html'}
+class VM {static viewUrl = 'app/my-component/my-component.html'}
 ```
 
 ### With Concatenation
@@ -55,14 +55,14 @@ In your `gulpfile.js`:
 ```javascript
 var $ = require('gulp-load-plugins')();
 
-gulp.task('templates', function() {
+gulp.task('views', function() {
   return gulp.src([
       'src/app/**/*.html',
       'src/app/**/*.svg'
     ])
     .pipe($.atrilHtml2js({
       stripPrefix: 'src',
-      concat: 'templates.js'
+      concat: 'views.js'
     }))
     .pipe($.babel({modules: 'system'}))
     .pipe(gulp.dest('dist/app'));
@@ -72,12 +72,12 @@ gulp.task('templates', function() {
 In your scripts:
 
 ```typescript
-// Imports and caches all templates at once.
-import 'app/templates';
+// Imports and caches all views at once.
+import 'app/views';
 import {Component} from 'atril';
 
 @Component({my-component})
-class VM {static templateUrl = 'app/my-component/my-component.html'}
+class VM {static viewUrl = 'app/my-component/my-component.html'}
 ```
 
 ## Alternative
@@ -88,10 +88,10 @@ plugin](https://github.com/systemjs/plugin-text). Example usage:
 ```
 import {Component} from 'atril';
 // Import as a string.
-import template from './my-component.html!text';
+import view from './my-component.html!text';
 
 @Component({my-component})
-class VM {static template = template}
+class VM {static view = view}
 ```
 
 This automatically works with `jspm`'s bundling. If you're not using TypeScript
