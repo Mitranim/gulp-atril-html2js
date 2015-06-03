@@ -7,9 +7,7 @@ the collective spirit of ReactJS, Polymer, Angular 2 and Aurelia.
 Converts HTML templates into JavaScript modules that self-add to `atril`'s
 view cache. This lets you avoid runtime XHR imports.
 
-**Note**: the converted files are in the ES6 module format. You'll need to
-transpile them into your chosen module format (SystemJS / CommonJS / AMD) with
-`gulp-babel`.
+The converted files use `require` style imports.
 
 ## Installation and Usage
 
@@ -32,7 +30,6 @@ gulp.task('views', function() {
       'src/app/**/*.svg'
     ])
     .pipe($.atrilHtml2js({stripPrefix: 'src'}))
-    .pipe($.babel({modules: 'system'}))
     .pipe(gulp.dest('dist/app'));
 });
 ```
@@ -64,7 +61,6 @@ gulp.task('views', function() {
       stripPrefix: 'src',
       concat: 'views.js'
     }))
-    .pipe($.babel({modules: 'system'}))
     .pipe(gulp.dest('dist/app'));
 });
 ```
